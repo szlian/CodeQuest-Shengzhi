@@ -1,0 +1,61 @@
+  case 6:
+      Console.WriteLine("You choose option 6, " + PressEnterContinueMsg.ToLower());
+      Console.ReadLine();
+
+      Console.WriteLine(AttacksAvailableMsg);
+      Console.WriteLine(YourCurrentLevelMsg + lvl);
+      Console.WriteLine();
+
+      if (lvl >= 1)
+      {
+          Console.WriteLine("1 " + LevelAttacksMsg.ToLower());
+          for (int i = 0; i < attacksLvl1.Length; i++)
+          {
+              Console.WriteLine("• " + attacksLvl1[i]);
+          }
+          Console.WriteLine();
+      }
+
+      if (lvl >= 2)
+      {
+          Console.WriteLine("2 " + LevelAttacksMsg.ToLower());
+          for (int i = 0; i < attacksLvl2.Length; i++)
+          {
+              Console.WriteLine("• " + attacksLvl2[i]);
+          }
+          Console.WriteLine();
+      }
+
+      if (lvl >= 3)
+      {
+          Console.WriteLine("3 " + LevelAttacksMsg.ToLower());
+          for (int i = 0; i < attacksLvl3.Length; i++)
+          {
+              Console.WriteLine("• " + attacksLvl3[i]);
+          }
+          Console.WriteLine();
+      }
+
+      if (lvl >= 4)
+      {
+          Console.WriteLine("4 " + LevelAttacksMsg.ToLower());
+          for (int i = 0; i < attacksLvl4.Length; i++)
+          {
+              Console.WriteLine("• " + attacksLvl4[i]);
+          }
+          Console.WriteLine();
+      }
+
+      if (lvl >= 5)
+      {
+          Console.WriteLine("5 " + LevelAttacksMsg.ToLower());
+          for (int i = 0; i < attacksLvl5.Length; i++)
+          {
+              Console.WriteLine("• " + attacksLvl5[i]);
+          }
+          Console.WriteLine();
+      }
+
+      Console.WriteLine(PressEnterReturnMsg + ".");
+      Console.ReadLine();
+      break;
