@@ -1,0 +1,16 @@
+case 4:
+    Console.WriteLine("You choose option 4, " + OpenInventoryMsg + ", " + PressEnterContinueMsg.ToLower());
+    Console.WriteLine();
+
+    if (inventory.Length == 0)
+    {
+        Console.WriteLine(InventoryEmptyMsg);
+    }
+    else
+    {
+        Console.WriteLine(InventoryItemsMsg + inventory.Length + ObjectsMsg);
+    }
+
+    Console.WriteLine(PressEnterReturnMsg);
+    Console.ReadLine();
+    break;
