@@ -1,0 +1,47 @@
+                case 2:
+                    Console.WriteLine(OptionChosenMsg + " 2");
+                    Console.WriteLine(LevelUpMsg + ", " + PressEnterContinueMsg.ToLower());
+                    Console.ReadLine();
+
+                    if (lvl == 5)
+                    {
+                        Console.WriteLine(AlreadyMaxLevelMsg);
+                        Console.ReadLine();
+                        break;
+                    }
+
+                    int enemyIndex = random.Next(1, Enemies.Length);
+                    string enemyName = Enemies[enemyIndex];
+                    int enemyHealth = hp[enemyIndex];
+
+                    Console.WriteLine(AppearedMonsterMsg + enemyName + HasHpMsg + enemyHealth + HpMsg);
+                    Console.WriteLine(PressEnterDiceMsg);
+                    Console.ReadLine();
+
+                    while (enemyHealth > 0)
+                    {
+                        int dice = random.Next(1, 7);
+                        enemyHealth = enemyHealth - dice;
+
+                        Console.WriteLine(YouRolledMsg + dice);
+                        Console.WriteLine(YouInflictMsg + dice + DamageMsg);
+
+                        if (dice == 1) Console.WriteLine(Dice1);
+                        else if (dice == 2) Console.WriteLine(Dice2);
+                        else if (dice == 3) Console.WriteLine(Dice3);
+                        else if (dice == 4) Console.WriteLine(Dice4);
+                        else if (dice == 5) Console.WriteLine(Dice5);
+                        else if (dice == 6) Console.WriteLine(Dice6);
+
+                        Console.WriteLine(MonsterHasMsg + enemyName + HasHpMsg + enemyHealth + HpMsg);
+                        Console.WriteLine(PressEnterKeepThrowingMsg);
+                        Console.ReadLine();
+
+                        if (enemyHealth <= 0)
+                        {
+                            Console.WriteLine(enemyName + NoHealthLeftMsg);
+                            lvl = lvl + 1;
+                            Console.WriteLine(YouAreLevelMsg + lvl);
+                        }
+                    }
+                    break;
