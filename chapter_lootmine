@@ -1,0 +1,86 @@
+ case 3:
+     Console.WriteLine(OptionChosenPressEnterMsg);
+     Console.ReadLine();
+
+     string[,] PublicMine = new string[5, 5];
+     bool[,] HiddenMine = new bool[5, 5];
+
+     while (tries < 5)
+     {
+         for (int i = 0; i < 5; i++)
+         {
+             for (int u = 0; u < 5; u++)
+             {
+                 PublicMine[i, u] = " - ";
+             }
+         }
+
+         int coins = random.Next(5, 11);
+         for (int coin = 0; coin < coins; coin++)
+         {
+             int coordXCoin = random.Next(0, 5);
+             int coordYCoin = random.Next(0, 5);
+             HiddenMine[coordXCoin, coordYCoin] = true;
+         }
+
+         for (int i = 0; i < 5; i++)
+         {
+             Console.WriteLine("   0  1  2  3  4");
+             for (int z = 0; z < PublicMine.GetLength(0); z++)
+             {
+                 Console.Write(z + " ");
+                 for (int m = 0; m < PublicMine.GetLength(1); m++)
+                 {
+                     Console.Write(PublicMine[z, m]);
+                 }
+                 Console.WriteLine("");
+             }
+
+             Console.WriteLine(InsertCoordsMsg);
+             try
+             {
+                 Console.WriteLine(InsertYCoordMsg);
+                 y = Convert.ToInt32(Console.ReadLine());
+                 Console.WriteLine(InsertXCoordMsg);
+                 x = Convert.ToInt32(Console.ReadLine());
+
+                 if (y <= 4 && y >= 0 && x <= 4 && x >= 0)
+                 {
+                     if (PublicMine[y, x] == Chap3Coin)
+                     {
+                         PublicMine[y, x] = Chap3Wrong;
+                         Console.WriteLine(ChooseAnotherSpotMsg + Chap3Wrong);
+                     }
+                     else
+                     {
+                         if (HiddenMine[y, x])
+                         {
+                             PublicMine[y, x] = Chap3Coin;
+                             Console.WriteLine(FoundCoinMsg);
+                             int points = random.Next(5, 50);
+                             Bits = Bits + points;
+                             Console.WriteLine(PointsEarnedMsg + points + EnterContinueMsg);
+                             Console.ReadLine();
+                         }
+                         else
+                         {
+                             PublicMine[y, x] = Chap3Wrong;
+                             Console.WriteLine(NothingHereMsg);
+                         }
+                     }
+                     tries++;
+                     Console.WriteLine(AttemptsLeftMsg + (5 - tries) + AttemptsLeftAndMsg + Bits + PointsMsg);
+                 }
+                 else
+                 {
+                     Console.WriteLine(OutOfRangeMsg);
+                     tries++;
+                 }
+             }
+             catch (FormatException)
+             {
+                 Console.WriteLine(InvalidFormatMsg);
+             }
+         }
+     }
+     break;
