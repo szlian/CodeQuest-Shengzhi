@@ -1,0 +1,72 @@
+case 5:
+    Console.WriteLine("You choose option 5, " + PressEnterContinueMsg.ToLower());
+    Console.ReadLine();
+
+    Console.WriteLine(CurrentlyHaveBitsMsg + Bits + BitsWannaBuyMsg);
+
+    string[] shop = {
+        "Iron Dagger 🗡️",
+        "Healing Potion ⚗️",
+        "Ancient Key 🗝️",
+        "Crossbow 🏹",
+        "Metal Shield 🛡️"
+    };
+
+    int[] prices = { 30, 10, 50, 40, 20 };
+
+    for (int i = 0; i < shop.Length; i++)
+    {
+        Console.WriteLine((i + 1) + " " + shop[i] + " " + prices[i] + " bits");
+    }
+
+    Console.WriteLine(BuyItemsNumberMsg);
+
+    int choice = -1;
+    try
+    {
+        choice = Convert.ToInt32(Console.ReadLine());
+    }
+    catch
+    {
+        Console.WriteLine(InvalidInputMsg);
+        break;
+    }
+
+    if (choice == 0)
+    {
+        Console.WriteLine(PurchaseCancelledMsg);
+        break;
+    }
+
+    if (choice < 1 || choice > 5)
+    {
+        Console.WriteLine(InvalidOptionMsg);
+        break;
+    }
+
+    int index = choice - 1;
+
+    if (Bits >= prices[index])
+    {
+        Bits = Bits - prices[index];
+        string[] inventoryAdd = new string[inventory.Length + 1];
+
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            inventoryAdd[i] = inventory[i];
+        }
+
+        inventoryAdd[inventoryAdd.Length - 1] = shop[index];
+        inventory = inventoryAdd;
+
+        Console.WriteLine(YouBoughtMsg + shop[index]);
+        Console.WriteLine(NowYouHaveMsg + Bits + BitsLeftMsg);
+    }
+    else
+    {
+        Console.WriteLine(NotEnoughBitsMsg + Bits + BitsLeftMsg);
+    }
+
+    Console.WriteLine(PressEnterReturnMsg + ".");
+    Console.ReadLine();
+    break;
