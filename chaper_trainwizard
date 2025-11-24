@@ -1,0 +1,58 @@
+case 1:
+    if (name == "nothing")
+    {
+        Console.WriteLine(MageNamePrompt);
+
+        name = Console.ReadLine();
+        //mayusculas
+        name = char.ToUpper(name[0]) + name.Substring(1).ToLower();
+        Console.WriteLine(WelcomeMsg + name);
+    }
+
+    Console.WriteLine(StartTrainingMsg);
+    day = 1;
+
+    while (day <= 5)
+    {
+        int exp = random.Next(0, 25);
+        Console.WriteLine(DayExpMsg + day + YouGetExpMsg + exp + ExpMsg);
+        day++;
+        totalexp = totalexp + exp;
+        Console.WriteLine(PressEnterTrainingMsg + (day - 1) + YourCurrentExpMsg + totalexp);
+        Console.ReadLine();
+    }
+
+    if (totalexp < 20)
+    {
+        Console.WriteLine(YouGotRankMsg + Rank1);
+        Console.WriteLine(RaodenElElanriMsg);
+        Title = Rank1;
+    }
+    else if (totalexp >= 20 && totalexp < 30)
+    {
+        Console.WriteLine(YouGotRankMsg + Rank2);
+        Console.WriteLine(ZynElBuguejatMsg);
+        Title = Rank2;
+    }
+    else if (totalexp >= 30 && totalexp < 35)
+    {
+        Console.WriteLine(YouGotRankMsg + Rank3);
+        Console.WriteLine(ArkaNullpointerMsg);
+        Title = Rank3;
+    }
+    else if (totalexp >= 35 && totalexp < 40)
+    {
+        Console.WriteLine(YouGotRankMsg + Rank4);
+        Console.WriteLine(ElarionDeLesBrasesMsg);
+        Title = Rank4;
+    }
+    else if (totalexp >= 40)
+    {
+        Console.WriteLine(YouGotRankMsg + Rank5);
+        Console.WriteLine(ITBWizardElGrisMsg);
+        Title = Rank5;
+    }
+
+    Console.WriteLine(TotalExpMsg + totalexp + ExpKnownAsMsg + name + " " + Title);
+    Console.ReadLine();
+    break;
